@@ -5,6 +5,9 @@ require './lib/tag'
 require './lib/user'
 require 'rack-flash'
 use Rack::Flash
+require 'sinatra/partial'
+set :partial_template_engine, :erb
+
 
 require_relative 'helpers/application'
 require_relative 'data_mapper_setup'
@@ -69,6 +72,12 @@ post '/sessions' do
 		flash[:errors] = ["The email or password are incorrect"]
 		erb :"sessions/new"
 	end
+end
+
+delete '/sessions' do
+	flash[:notice] = "Good bye!"
+	session[:user_id] = nil
+	redirect to('/')
 end
 
 
