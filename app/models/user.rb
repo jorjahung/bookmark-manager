@@ -1,10 +1,11 @@
 require 'bcrypt'
+require 'rack-flash'
 
 class User
 	include DataMapper::Resource
 
   attr_reader :password
-  attr_accessor :password_confirmation
+  attr_accessor :password_confirmation, :password_token, :password_token_timestamp
 
 	property :id, Serial
 	property :email, String, :unique => true, :message => "This email is already taken"
@@ -52,4 +53,6 @@ class User
       nil
     end
   end
+
+
 end
