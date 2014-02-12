@@ -11,14 +11,14 @@ feature "User can reset password" do
 	end
 
 	scenario "with email that is registered" do
-		visit '/users/forgotten_password'
+		visit '/users/reset_password'
 		fill_in "email", :with => "test@test.com"
 		click_button "Reset password"
 		expect(page).to have_content("Email sent!")
 	end
 
 	scenario "with email that is registered" do
-		visit '/users/forgotten_password'
+		visit '/users/reset_password'
 		fill_in "email", :with => "fail@test.com"
 		click_button "Reset password"
 		expect(page).to have_content("Email is not registered")

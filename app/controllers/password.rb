@@ -1,8 +1,8 @@
-get '/users/forgotten_password' do
-	erb :"users/forgotten_password"
+get '/users/reset_password' do
+	erb :"users/reset_password"
 end
 
-post '/users/forgotten_password' do
+post '/users/reset_password' do
 	email = params[:email]
 	user = User.first(:email => email)
     if user
