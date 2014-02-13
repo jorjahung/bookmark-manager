@@ -1,3 +1,8 @@
+require_relative 'helpers/session'
+
+include SessionHelpers
+
+
 feature "User reset password" do
 
 	before(:each) do
@@ -8,14 +13,12 @@ feature "User reset password" do
 	end
 
 	scenario "should work with email that is registered" do
-		fill_in "email", :with => "test@test.com"
-		click_button "Reset password"
+		reset_pw
 		expect(page).to have_content("Email sent!")
 	end
 
 	scenario "not work with email that is not registered" do
-		fill_in "email", :with => "fail@test.com"
-		click_button "Reset password"
+		reset_pw("fail@test.com")
 		expect(page).to have_content("Email address is not registered")
 	end
 

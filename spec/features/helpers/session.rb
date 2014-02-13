@@ -17,4 +17,17 @@ module SessionHelpers
 	  click_button "Sign up"
 	end
 	
+	def reset_pw(email = "test@test.com")
+	  fill_in :email, :with => email
+	  click_button "Reset password"
+	end
+
+	def new_pw(email="test@test.com",
+						 password = "newpassword"
+						 password_confirmation = "newpassword")
+		fill_in :email, :with => email
+	  fill_in :password, :with => password
+	  fill_in :password_confirmation, :with => password_confirmation
+	end
+
 end
