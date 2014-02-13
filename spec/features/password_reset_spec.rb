@@ -6,7 +6,7 @@ include SessionHelpers
 feature "User reset password" do
 
 	before(:each) do
-		@user = User.create(:email => "test@test.com",
+		@user = User.create(:email => "test1@test.com",
 								:password => "test",
 								:password_confirmation => "test")
 			visit '/users/reset_password'
@@ -25,7 +25,7 @@ feature "User reset password" do
 	scenario "with working token" do
 		reset_pw
 		create_token
-		expect(page).to have_content("New password")
+		expect(page).to have_content("new password")
 	end
 
 	scenario "should not work with fake token" do
@@ -52,6 +52,6 @@ feature "User reset password" do
 		create_token
 		new_pw
 		sign_in("test@test.com", "newpassword")
-		expect(page).to have_content("Welcome, test@test.com")
+		expect(page).to have_content("Welcome, test1@test.com")
 	end
 end

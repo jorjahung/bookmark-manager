@@ -110,7 +110,7 @@ header #user-links #forgot-password{
 /******************** BUTTONS ********************/
 
 /******************** NOTICES ********************/
-#notice {
+.flash {
   text-align: center;
   margin: 5px auto;
   padding: 7px;
