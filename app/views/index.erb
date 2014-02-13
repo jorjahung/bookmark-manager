@@ -1,4 +1,10 @@
-<h1>Bookmark Manager</h1>
+<h1>Welcome to the Bookmark Manager</h1>
+CURRENT LINKS:
+<ul>
+	<% @links.each do |link| %>
+		<li><a href="<%= link.url %>"><%= link.title %></a></li>
+	<% end %>
+</ul>
 
 <div id="new-link">
 	<form action="/links" method="post">
@@ -9,8 +15,3 @@
 	</form>
 </div>
 
-<ul>
-	<% @links.each do |link| %>
-		<li><a href="<%= link.url %>"><%= link.title %></a></li>
-	<% end %>
-</ul>
