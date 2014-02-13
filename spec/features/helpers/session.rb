@@ -22,12 +22,21 @@ module SessionHelpers
 	  click_button "Reset password"
 	end
 
+	def create_token(password_token="FAKETOKEN",
+									password_token_timestamp = Time.now,
+									token_url='/users/reset_password/FAKETOKEN')
+		@user.update(:password_token => password_token,
+								 :password_token_timestamp => password_token_timestamp)
+		visit token_url
+	end
+
 	def new_pw(email="test@test.com",
-						 password = "newpassword"
+						 password = "newpassword",
 						 password_confirmation = "newpassword")
 		fill_in :email, :with => email
 	  fill_in :password, :with => password
 	  fill_in :password_confirmation, :with => password_confirmation
+	  click_button "Reset password"
 	end
 
 end
