@@ -8,7 +8,7 @@ class User
   attr_accessor :password_confirmation
 
 	property :id, Serial
-	property :email, String, :unique => true, :message => "This email is already taken"
+	property :email, String, :unique => true
 	
   # This will store both the password and the salt:
   # It's Text and not String because String holds 50 characters by default and it's not enough for the hash and salt
@@ -30,7 +30,7 @@ class User
 
   # This is datamapper's method of validating the model:
   # The model will not be saved unless both password and password_confirmation are the same
-  validates_confirmation_of :password, :message => "Your passwords don't match"
+  validates_confirmation_of :password, :message => "Passwords don't match"
   validates_uniqueness_of :email
 
   def self.authenticate(email, password)

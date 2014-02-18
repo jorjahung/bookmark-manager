@@ -6,7 +6,7 @@ post '/users/reset_password' do
 	email = params[:email]
 	user = User.first(:email => email)
     if user
-      user.password_token = (1..64).map{('A'..'Z').to_a.sample}.join
+      user.password_token = (1..50).map{(('A'..'Z').to_a+('a'..'z').to_a+(1..9).to_a).sample}.join
       user.password_token_timestamp = Time.now
       user.save
       # send an email with link that should be "localhost:9393/users/reset_password/#{user.password_token}"
@@ -24,13 +24,13 @@ get '/users/reset_password/:token' do |token|
 		if Time.now <= expiry_time # is fine
 			erb :"users/get_new_password"
 		else
-			flash[:notice] = "Error: Password reset token expired"
+			flash[:errors] = "Password reset token expired"
 			user.update(:password_token => nil,
 									:password_token_timestamp => nil)
 			redirect to('/users/reset_password')
 		end
 	else
-		flash[:notice] = "Error: Failed to find password reset token"
+		flash[:errors] = "Failed to find password reset token"
 		redirect to('/')
 	end
 end
@@ -54,7 +54,7 @@ post '/users/reset_password/:token' do
 				erb :"users/get_new_password"
 			end
 	else
-		flash[:notice] = "Error: Failed to find email and reset token combination"
+		flash[:errors] = "Failed to find email and reset token combination"
 		erb :"users/get_new_password"
 	end
 end
