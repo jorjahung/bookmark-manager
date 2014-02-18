@@ -147,6 +147,7 @@ header #user-links #forgot-password{
   margin: 20px auto;
   max-width: 90%;
   padding: 15px 10px;
+  display: none; /* makes all links invisible */
 }
 
 .link a {
