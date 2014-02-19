@@ -1,5 +1,5 @@
 get '/users/reset_password' do
-	erb :"users/reset_password"
+	erb :"users/reset_password", :layout => !request.xhr?
 end
 
 post '/users/reset_password' do

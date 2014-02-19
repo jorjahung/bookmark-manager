@@ -21,6 +21,7 @@ function addFavouritesHandler() {
 
 $(function() {
 	addFavouritesHandler();
+	prepareRemoteFormsHandler();
 });
 
 function showLinkFavouritedNotice(link) {
@@ -36,4 +37,17 @@ function showLinkFavouritedNotice(link) {
 	window.setTimeout(function() {
 		$(flash).fadeOut();	
 	}, 2000);
-}
+};
+
+function prepareRemoteFormsHandler() {
+	$('.add-link, #sign-up, #sign-in, #forgot-password').click(function(event) {
+		$.get($(this).attr('href'), function(data) { 
+			if ($("#ajax-form").length==0) {
+				$("#links-container").prepend("<div id='ajax-form'></div>");
+			}
+			$('#links-container #ajax-form').html(data);
+		});
+		// prevents the browser from sending a GET request:
+		event.preventDefault();
+	});
+};
