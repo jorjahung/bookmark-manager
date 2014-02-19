@@ -5,7 +5,7 @@
   min-height: 100%;
   height: auto !important;
   height: 100%;
-  margin: 0 auto -4em;
+  margin: 0 auto -4.4em;
 }
 
 
@@ -24,6 +24,7 @@ h1 {
 
 /******************** HEADER ********************/
 header {  
+  position: relative;
   height: 70px;
   background-color: black;
   color: white;
@@ -31,8 +32,6 @@ header {
 }
 
 header #logo {    
-  position: relative;
-  display: block;
   float: left;
   font-size: 2em;
   line-height: 55px;
@@ -146,6 +145,7 @@ header #user-links #forgot-password{
   /* for left and right */
   margin: 20px auto;
   max-width: 90%;
+  height: auto;
   padding: 15px 10px;
   position: relative;
 }
@@ -218,13 +218,20 @@ form {
     margin:5px; 
   }
 
+  form input[type="textarea"] {
+    border: 1px solid black;
+    font-size: 16px;
+    width: 400px;
+    height: 50px;
+    margin:5px; 
+  }
 
 /******************** FORMS ********************/
 
 
 /******************** FOOTER ********************/
 .footer, .push {
-  height: 4em;
+  height: 4.4em;
 }
 .footer {
 background-color: rgba(0,0,0,0.2);
@@ -239,10 +246,9 @@ footer {
     margin: auto inherit;
   }
 
-/*  footer img {
-     http://stackoverflow.com/questions/10658475/3px-extra-height-on-a-div-with-an-image-inside-it 
+  footer img {
     vertical-align: top;
-  }*/
+  }
 
   footer #technologies {
     -webkit-flex: 1;
@@ -255,6 +261,17 @@ footer {
     vertical-align: middle;
     padding: 5px 25px;
   }
+
+  footer a {
+  color: #7e1c41;
+  text-decoration: none;
+  }
+
+  footer a:hover {
+  color: #ae406b;
+  }
+
+
 /******************** FOOTER ********************/
 
 
