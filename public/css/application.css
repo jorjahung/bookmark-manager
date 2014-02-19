@@ -230,16 +230,13 @@ form {
 
 
 /******************** FOOTER ********************/
-.footer, .push {
+footer, .push {
   height: 4.4em;
-}
-.footer {
-background-color: rgba(0,0,0,0.2);
 }
 
 footer {
   display: flex;
-  
+  background-color: rgba(0,0,0,0.2); 
 }
 
   footer > * {
@@ -253,10 +250,12 @@ footer {
   footer #technologies {
     -webkit-flex: 1;
     flex: 1;
+    font-size: 12px;
   }
 
   footer p {
     float: right;
+    text-align: left;
     line-height: 1em;
     vertical-align: middle;
     padding: 5px 25px;
