@@ -24,13 +24,13 @@ get '/users/reset_password/:token' do |token|
 		if Time.now <= expiry_time # is fine
 			erb :"users/get_new_password"
 		else
-			flash[:errors] = "Password reset token expired"
+			flash[:errors] = ["Password reset token expired"]
 			user.update(:password_token => nil,
 									:password_token_timestamp => nil)
 			redirect to('/users/reset_password')
 		end
 	else
-		flash[:errors] = "Failed to find password reset token"
+		flash[:errors] = ["Failed to find password reset token"]
 		redirect to('/')
 	end
 end
@@ -54,7 +54,7 @@ post '/users/reset_password/:token' do
 				erb :"users/get_new_password"
 			end
 	else
-		flash[:errors] = "Failed to find email and reset token combination"
+		flash[:errors] = ["Failed to find email and reset token combination"]
 		erb :"users/get_new_password"
 	end
 end

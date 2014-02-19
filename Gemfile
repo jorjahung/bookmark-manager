@@ -8,6 +8,7 @@ gem 'database_cleaner'
 gem 'bcrypt-ruby'
 gem 'rack-flash3'
 gem 'sinatra-partial'
+gem 'poltergeist'
 
 group :test, :development do
 	gem 'rspec'

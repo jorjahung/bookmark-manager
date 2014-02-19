@@ -28,4 +28,11 @@ feature "User adds a new link" do
     click_button 'Add link'
   end
 
+  scenario "from the homepage using an ajax form", :js => true do
+    visit '/'
+    click_link "Add link"
+    add_link("http://www.example.com/", "Example")
+    expect(page).to have_content('Example')
+    expect(current_path).to eq('/')
+  end
 end

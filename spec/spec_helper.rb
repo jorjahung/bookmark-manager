@@ -3,8 +3,11 @@ ENV["RACK_ENV"] = 'test' # because we need to know what database to work with
 require './app/server' 
 require 'database_cleaner'
 require 'capybara/rspec'
+require 'capybara/poltergeist'
 
 Capybara.app = Sinatra::Application
+Capybara.javascript_driver = :poltergeist
+
 # this needs to be after ENV["RACK_ENV"] = 'test' 
 # because the server needs to know what environment it's running it: test or development. 
 # The environment determines what database to use.
@@ -22,16 +25,23 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = 'random'
 
-	config.before(:suite) do
-		DatabaseCleaner.strategy = :transaction
-		DatabaseCleaner.clean_with(:truncation)
-	end
+ config.before(:suite) do    
+    DatabaseCleaner.clean_with(:truncation)
+  end
 
-	config.before(:each) do
-		DatabaseCleaner.start
-	end
+  config.before(:each) do
+    DatabaseCleaner.strategy = :transaction    
+  end
 
-	config.after(:each) do
-		DatabaseCleaner.clean
-	end
+  config.before(:each, :js => true) do
+    DatabaseCleaner.strategy = :truncation
+  end
+
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
+
+  config.after(:each) do
+    DatabaseCleaner.clean
+  end
 end
