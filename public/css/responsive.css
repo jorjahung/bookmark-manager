@@ -1,1 +1,92 @@
-responsive.css
+@media(max-width: 480px) {
+  body {
+    font-size: .8em;    
+  }
+
+  h1 {
+    font-size: 1.5em;
+  }
+
+  form input[type="text"], form input[type="password"], form input[type="textarea"] {
+    width: 90%;
+    font-size: .8em;
+  }
+
+  header {
+    padding: .3em;
+    height: 3.8em;
+  }
+
+    header #logo {
+      margin-right: .3em;
+      font-size: 1.5em;
+      line-height: 1em;
+      width: 5em;
+    }  
+
+    header #forgot-password {
+      display: none;
+    }  
+
+    header #add-link {
+      margin: 0;
+      width: auto;
+    }
+
+  .button {
+    font-size: .8em;
+    min-width: 2em;
+    margin: 1em 0;
+  }
+
+  #links-container {
+    margin: .6em auto;
+    padding: .4em;
+  }
+
+  #links .link {
+    margin: .4em auto;
+    padding: 5px;
+    overflow: auto; /* http://learnlayout.com/clearfix.html */
+  }
+
+    #links .star {
+      font-size: 16px;
+    }
+
+    #links .source {
+      font-size: 10px;
+    }
+
+  footer {
+    padding: 0 10px;
+  }
+
+    footer p {
+      padding: 5px;
+    }
+
+    footer #makersacademy-logo img {
+      width: 150px;
+    } 
+}
+
+@media(max-width: 320px) {
+  footer, .push {
+    height: 130px;
+  }
+
+  .wrapper {
+    margin-bottom: -130px;
+  }
+
+  footer {
+    display: block;    
+    text-align: center;
+  }
+
+    footer #makersacademy-logo img {
+      width: 100%;
+    }
+
+}
